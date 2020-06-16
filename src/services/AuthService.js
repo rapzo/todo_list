@@ -1,16 +1,35 @@
+import jwtDecode from 'jwt-decode';
+
 function AuthService() {
   const user = {
     id: null,
     email: null,
     name: null,
     isAuthenticated: false,
+    token: null,
   };
 
   return {
     login(email, password) {
-      return {
-        ...user
-      };
+      return fetch('http://localhost:1337/login', {
+        method: 'POST',
+        body: JSON.stringify({
+          email,
+          password
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(response => {
+          return response.json();
+        })
+        .then(({token}) => {
+          user.token = token;
+
+          return jwtDecode(token);
+        })
+        .catch(console.log);
     },
 
     logout() {

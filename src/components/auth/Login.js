@@ -1,12 +1,28 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { useLocation, Redirect } from 'react-router-dom';
-// import { authService } from '../../services/AuthService';
+import { useLocation, Redirect, useHistory } from 'react-router-dom';
+import { authService } from '../../services/AuthService';
 
-export function Login({user}) {
+export function Login({user, onLogin}) {
+  let emailRef = React.useRef();
+  let passwordRef = React.useRef();
   let location = useLocation();
+  let history = useHistory();
 
   let { from } = location.state || { from: { pathname: "/" } };
+
+  const login = () => {
+    authService.login(
+      emailRef.current.value,
+      passwordRef.current.value
+    ).then(user => {
+      onLogin(user);
+
+      console.log(from);
+      history.push(from);
+    });
+  };
+
   if (user.loggedIn) {
     return (
       <Redirect to={from} />
@@ -20,18 +36,28 @@ export function Login({user}) {
           <div className="field">
             <label className="label">Email</label>
             <p className="control">
-              <input className="input" type="email" placeholder="Email" />
+              <input
+                className="input"
+                type="email"
+                placeholder="Email"
+                ref={emailRef}
+              />
             </p>
           </div>
           <div className="field">
             <label className="label">Password</label>
             <p className="control">
-              <input className="input" type="password" placeholder="Password" />
+              <input
+                className="input"
+                type="password"
+                placeholder="Password"
+                ref={passwordRef}
+              />
             </p>
           </div>
           <div className="field">
             <p className="control">
-              <button className="button is-success">
+              <button className="button is-success" onClick={login}>
                 Login
               </button>
             </p>
@@ -49,4 +75,5 @@ Login.propTypes = {
     email: PropTypes.string,
     loggedIn: PropTypes.bool.isRequired,
   }),
+  onLogin: PropTypes.func.isRequired
 };

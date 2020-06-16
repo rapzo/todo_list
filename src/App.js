@@ -18,26 +18,14 @@ function App() {
     loggedIn: false,
   });
 
-  React.useEffect(() => {
-    fetch('/data/users.json')
-      .then(response => {
-        return response.json();
-      })
-      .then(([body]) => (
-        setUser(() => {
-          // authService.login();
-          return {
-            ...body,
-            loggedIn: true,
-          };
-        })
-      ))
-      .catch(error => {
-        console.log(error);
-      });
-
-    return () => {};
-  }, []);
+  const handleLogin = data => {
+    setUser({
+      ...user,
+      id: Number(data.id),
+      email: data.email,
+      loggedIn: true,
+    });
+  };
 
   return (
     <div className="App">
@@ -49,7 +37,7 @@ function App() {
             <Register />
           </Route>
           <Route path="/login">
-            <Login user={user} />
+            <Login user={user} onLogin={handleLogin} />
           </Route>
           <Route path="/">
             <Dashboard user={user} />
