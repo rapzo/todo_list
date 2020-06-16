@@ -3,16 +3,12 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
-  useHistory,
-  useLocation
 } from "react-router-dom";
 
 import { Navbar } from './components/navbar/Navbar';
 import { Register } from './components/auth/Register';
 import { Login } from './components/auth/Login';
 import { Dashboard } from './components/dashboard/Dashboard';
-import { authService } from './services/AuthService';
 
 function App() {
   const [user, setUser] = React.useState({

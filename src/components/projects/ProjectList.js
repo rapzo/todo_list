@@ -4,13 +4,15 @@ import { Project } from './Project';
 
 export function ProjectList({projects}) {
   return (
-    <div className="columns">
-      {projects.map(project => (
-        <div key={project.id} className="column is-2">
-          <Project {...project} />
-        </div>
-      ))}
-    </div>
+    <section className="section">
+      <div className="columns">
+        {projects.map(project => (
+          <div key={project.id} className="column is-3">
+            <Project {...project} />
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
 

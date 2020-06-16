@@ -6,7 +6,7 @@ export function Project({id, title, createdAt, updatedAt, tasks}) {
   return (
     <div className="card">
       <header className="card-header">
-        <p className="card-header-title">{title}</p>
+        <h3 className="card-header-title">{title}</h3>
         {/* <a href="#" className="card-header-icon" aria-label="more options">
           <span className="icon">
             <i className="fas fa-angle-down" aria-hidden="true"></i>
@@ -15,16 +15,21 @@ export function Project({id, title, createdAt, updatedAt, tasks}) {
       </header>
       <div className="card-content">
         <div className="content">
-          {tasks && tasks.length > 0 && (
+          <h5 className="title is-5">To Do</h5>
+          {tasks && tasks.length > 0 ? (
             <TaskList tasks={tasks} />
+          ) : (
+            <p>No tasks...</p>
           )}
-          <br />
-          <time dateTime={createdAt}>{new Date(createdAt).toLocaleString()}</time>
         </div>
       </div>
       <footer className="card-footer">
-        <a href="#" className="card-footer-item">Edit</a>
-        <a href="#" className="card-footer-item">Delete</a>
+        <div className="card-footer-item">
+          <input type="text" className="card-footer-item" />
+        </div>
+        <div className="card-footer-item">
+          <button className="button is-primary" onClick={() => {}}>add</button>
+        </div>
       </footer>
     </div>
   );

@@ -6,7 +6,7 @@ export function Navbar({user}) {
   return (
     <nav className="navbar is-light" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        <a className="navbar-item" href="/">EDirectInsure TODO List</a>
+        <a className="navbar-item" href="/">TODO List</a>
 
         <a
           role="button"
@@ -27,14 +27,23 @@ export function Navbar({user}) {
         </div>
 
         <div className="navbar-end">
-          <div className="navbar-item">
-            {user.loggedIn ? (
-                <div className="buttons">
-                <Link to="/profile" className="button is-primary">
-                  <strong>{user.name}</strong>
+          {user.loggedIn ? (
+            <div className="navbar-item has-dropdown is-hoverable">
+              <a className="navbar-link">
+                {user.name}
+              </a>
+
+              <div className="navbar-dropdown is-right">
+                <Link to="/profile" className="navbar-item">
+                  profile
+                </Link>
+                <Link to="/logout" className="navbar-item">
+                  logout
                 </Link>
               </div>
-            ) : (
+            </div>
+          ) : (
+            <div className="navbar-item">
               <div className="buttons">
                 <Link to="/register" className="button is-primary">
                   <strong>Sign up</strong>
@@ -43,8 +52,8 @@ export function Navbar({user}) {
                   Log in
                 </Link>
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </nav>
