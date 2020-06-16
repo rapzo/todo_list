@@ -37,8 +37,28 @@ export function Dashboard({user}) {
     );
   }
 
+  const handleCreateProject = title => {
+    const now = new Date().toISOString();
+
+    setProjects([
+      ...projects,
+      {
+        id: projects.length + 1,
+        title,
+        createdAt: now,
+        updatedAt: now,
+        tasks: [],
+      },
+    ]);
+  };
+
   return (
-    <ProjectList projects={projects} />
+    <section className="section">
+      <ProjectList
+        projects={projects}
+        onCreateProject={handleCreateProject}
+      />
+    </section>
   );
 }
 

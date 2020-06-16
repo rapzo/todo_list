@@ -1,0 +1,22 @@
+.task {
+  display: flex;
+
+  &__description {
+    flex-grow: 1;
+    padding-left: 10px;
+  }
+
+  &__control {
+    opacity: 0;
+
+    .icon {
+      cursor: pointer;
+    }
+  }
+
+  &:hover & {
+    &__control {
+      opacity: 1;
+    }
+  }
+}

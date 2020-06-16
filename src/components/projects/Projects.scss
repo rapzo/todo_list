@@ -1,0 +1,13 @@
+.card-footer {
+  > .card-footer-item:last-child {
+    flex-grow: 0;
+  }
+}
+
+.project-form {
+  padding: 60px;
+
+  button {
+    width: 100%;
+  }
+}

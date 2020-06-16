@@ -1,9 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faPen, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+
 import './index.scss';
 
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+
+library.add(faPen, faTrashAlt);
 
 ReactDOM.render(
   <React.StrictMode>

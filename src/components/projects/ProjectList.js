@@ -1,18 +1,22 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Project } from './Project';
+import { ProjectForm } from './ProjectForm';
 
-export function ProjectList({projects}) {
+import './Projects.scss';
+
+export function ProjectList({projects, onCreateProject}) {
   return (
-    <section className="section">
-      <div className="columns">
-        {projects.map(project => (
-          <div key={project.id} className="column is-3">
-            <Project {...project} />
-          </div>
-        ))}
+    <div className="columns">
+      {projects.map(project => (
+        <div key={project.id} className="column">
+          <Project {...project} />
+        </div>
+      ))}
+      <div className="column">
+        <ProjectForm onCreateProject={onCreateProject} />
       </div>
-    </section>
+    </div>
   );
 }
 
@@ -20,4 +24,5 @@ ProjectList.propTypes = {
   projects: PropTypes.arrayOf(
     PropTypes.shape(Project.propTypes)
   ).isRequired,
+  onCreateProject: PropTypes.func.isRequired,
 };
