@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "userId": 1,
+    "title": "Project #1",
+    "createdAt": "2020-06-15T22:49:05.228Z",
+    "updatedAt": "2020-06-15T22:49:05.228Z",
+    "tasks": [
+      {
+        "id": 1,
+        "projectId": 1,
+        "description": "task #1",
+        "createdAt": "",
+        "updatedAt": "",
+        "finishedAt": null
+      },
+      {
+        "id": 2,
+        "projectId": 1,
+        "description": "task #2",
+        "createdAt": "",
+        "updatedAt": "",
+        "finishedAt": null
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "userId": 1,
+    "title": "Project #2",
+    "createdAt": "2020-06-15T22:49:05.228Z",
+    "updatedAt": "2020-06-15T22:49:05.228Z",
+    "tasks": []
+  }
+]
