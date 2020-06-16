@@ -1,10 +1,10 @@
 import * as React from 'react';
 
 export function Register() {
-  const formData = React.useState({
-    email: '',
-    password: ''
-  });
+  // const formData = React.useState({
+  //   email: '',
+  //   password: ''
+  // });
 
   return (
     <div className="container">

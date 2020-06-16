@@ -29,7 +29,7 @@ export function Navbar({user}) {
         <div className="navbar-end">
           {user.loggedIn ? (
             <div className="navbar-item has-dropdown is-hoverable">
-              <a className="navbar-link">
+              <a href="#user" className="navbar-link">
                 {user.name}
               </a>
 
